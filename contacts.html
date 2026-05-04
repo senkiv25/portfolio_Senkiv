@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Контакти — Зворотний зв'язок</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Головна</a></li>
+                <li><a href="about.html">Про мене</a></li>
+                <li><a href="contacts.html">Контакти</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Зв'язатися зі мною</h1>
+        
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Особисті дані</legend>
+                <label for="username">Ваше ім'я:</label>
+                <input type="text" id="username" name="username" required placeholder="Ім'я Прізвище">
+                <br><br>
+                <label for="useremail">Ваш Email:</label>
+                <input type="email" id="useremail" name="useremail" required>
+            </fieldset>
+
+            <fieldset>
+                <legend>Ваше запитання</legend>
+                <label for="subject">Тема:</label>
+                <select id="subject" name="subject">
+                    <option value="collab">Співпраця</option>
+                    <option value="help">Допомога</option>
+                    <option value="other">Інше</option>
+                </select>
+                <br><br>
+                <label for="msg">Повідомлення:</label><br>
+                <textarea id="msg" name="msg" rows="5" cols="40"></textarea>
+            </fieldset>
+
+            <p>Згода на обробку даних:</p>
+            <label>
+                <input type="checkbox" name="agree" required> Я згоден
+            </label>
+            <br><br>
+            <button type="submit">Надіслати форму</button>
+        </form>
+    </main>
+</body>
+</html>
