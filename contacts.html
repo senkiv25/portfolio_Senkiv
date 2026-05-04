@@ -2,6 +2,7 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Контакти — Зворотний зв'язок</title>
 </head>
 <body>
@@ -17,7 +18,15 @@
 
     <main>
         <h1>Зв'язатися зі мною</h1>
-        
+
+        <section>
+            <h2>Мої контактні дані</h2>
+            <p>Електронна пошта: <a href="mailto:i.o.senkiv@student.khai.edu">i.o.senkiv@student.khai.edu</a></p>
+            <p>Телефон: <a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
+        </section>
+
+        <hr>
+
         <form action="#" method="post">
             <fieldset>
                 <legend>Особисті дані</legend>
@@ -25,7 +34,7 @@
                 <input type="text" id="username" name="username" required placeholder="Ім'я Прізвище">
                 <br><br>
                 <label for="useremail">Ваш Email:</label>
-                <input type="email" id="useremail" name="useremail" required>
+                <input type="email" id="useremail" name="useremail" required placeholder="email@example.com">
             </fieldset>
 
             <fieldset>
@@ -38,7 +47,7 @@
                 </select>
                 <br><br>
                 <label for="msg">Повідомлення:</label><br>
-                <textarea id="msg" name="msg" rows="5" cols="40"></textarea>
+                <textarea id="msg" name="msg" rows="5" cols="40" required placeholder="Введіть ваше повідомлення тут..."></textarea>
             </fieldset>
 
             <p>Згода на обробку даних:</p>
@@ -49,5 +58,9 @@
             <button type="submit">Надіслати форму</button>
         </form>
     </main>
+
+    <footer>
+        <p>&copy; 2026 Senkiv. Всі права захищені.</p>
+    </footer>
 </body>
 </html>
