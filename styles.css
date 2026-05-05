@@ -1,0 +1,223 @@
+*, 
+*::before, 
+*::after { 
+    box-sizing: border-box; 
+} 
+
+body { 
+    margin: 0; 
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif; /* Зовнішній шрифт */
+    line-height: 1.6;
+    background-color: #f0f2f5; /* HEX колір */
+    color: rgb(44, 62, 80);    /* RGB колір */
+    padding-top: 70px;         /* Відступ для фіксованого хедеру (Пункт 7) */
+}
+
+/* Одиниці вимірювання rem (Пункт 8) */
+h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+h2 { font-size: 1.8rem; margin: 1.5rem 0; }
+p { font-size: 1rem; }
+
+/* ===== Хедер та навігація (Пункт 4, 7, 10) ===== */
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1px 0; 
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    /* Прибираємо або зменшуємо відступи у самого списку */
+    margin: 5px 0; 
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+/* Стилізація посилань за схемою LVHA (Пункт 10) */
+nav ul li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:link { color: #ecf0f1; }
+nav ul li a:visited { color: #bdc3c7; }
+nav ul li a:hover { 
+    background-color: #34495e; 
+    border-radius: 4px;
+    color: #3498db;
+}
+nav ul li a:active { transform: translateY(2px); }
+nav ul li a:focus { outline: 2px solid #3498db; }
+
+/* ===== Головна секція (Пункт 3, 9, 11) ===== */
+
+main {
+    max-width: 1000px;
+    margin: 2rem auto; /* Центрування контейнера */
+    padding: 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    overflow: hidden; /* Обрізання контенту (Пункт 11) */
+}
+
+/* Декорування через псевдоелемент (Пункт 9) */
+h2::after {
+    content: ""; /* Обов'язково */
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #3498db;
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+/* Стилізація зображення профілю */
+img {
+    border-radius: 50%; /* Заокруглення кутів */
+    border: 5px solid #ecf0f1;
+    display: block;
+    margin: 0 auto 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+/* ===== Таблиця (Пункт 5) ===== */
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Прибрати подвійні рамки */
+    margin: 2rem 0;
+}
+
+th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Стилізація заголовка */
+th {
+    background-color: #3498db;
+    color: white;
+    font-weight: bold;
+}
+
+/* "Зебра" та Hover для рядків */
+tr:nth-child(even) { background-color: #f9f9f9; }
+tr:hover { background-color: #f1f1f1; }
+
+/* ===== Форма (Пункт 6) ===== */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+fieldset {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+/* Селектор атрибута (Пункт 2) */
+input[type="text"], 
+input[type="email"], 
+select, 
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+/* Стан фокусу (Пункт 6) */
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
+}
+
+/* Кнопка відправки */
+button[type="submit"] {
+    background-color: #27ae60;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer; /* Зміна курсору */
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #2ecc71;
+}
+
+/* ===== Позиціонування (Пункт 7) ===== */
+
+/* Кнопка "Нагору" */
+.btn-up {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #3498db;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 999;
+}
+
+/* Приклад Relative + Absolute */
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* ===== Футер ===== */
+
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background: #2c3e50;
+    color: #bdc3c7;
+    margin-top: 3rem;
+}
