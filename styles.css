@@ -1,223 +1,246 @@
-*, 
-*::before, 
-*::after { 
+:root {
+    --color-primary: #3498db;
+    --color-secondary: #2ecc71;
+    --color-bg: #f0f2f5;
+    --color-text: #2c3e50;
+    --color-accent: #e74c3c;
+    --color-white: #ffffff;
+    --color-footer: #2c3e50;
+    
+    --font-main: 'Roboto', Arial, sans-serif;
+    
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    
+    --border-radius: 8px;
+    --transition-speed: 0.3s;
+    --shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+
+/* ===== 2. Загальні налаштування та Mobile First ===== */
+*, *::before, *::after { 
     box-sizing: border-box; 
 } 
+
+html {
+    scroll-behavior: smooth; /* Плавна прокрутка */
+}
 
 body { 
     margin: 0; 
     padding: 0;
-    font-family: 'Roboto', Arial, sans-serif; /* Зовнішній шрифт */
+    font-family: var(--font-main);
     line-height: 1.6;
-    background-color: #f0f2f5; /* HEX колір */
-    color: rgb(44, 62, 80);    /* RGB колір */
-    padding-top: 70px;         /* Відступ для фіксованого хедеру (Пункт 7) */
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
-/* Одиниці вимірювання rem (Пункт 8) */
-h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-h2 { font-size: 1.8rem; margin: 1.5rem 0; }
-p { font-size: 1rem; }
+/* Гнучка типографіка (Пункт 9) */
+h1 { font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: var(--spacing-md); }
+h2 { font-size: clamp(1.4rem, 4vw, 1.8rem); margin: var(--spacing-md) 0; }
+p { font-size: clamp(0.95rem, 2vw, 1.1rem); }
 
-/* ===== Хедер та навігація (Пункт 4, 7, 10) ===== */
-
-header {
-    background-color: #2c3e50;
-    color: white;
-    padding: 1px 0; 
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    /* Прибираємо або зменшуємо відступи у самого списку */
-    margin: 5px 0; 
-    padding: 0;
-}
-
-nav ul li {
-    margin: 0 1rem;
-}
-
-/* Стилізація посилань за схемою LVHA (Пункт 10) */
-nav ul li a {
-    text-decoration: none;
-    color: #ecf0f1;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    transition: all 0.3s ease;
-}
-
-nav ul li a:link { color: #ecf0f1; }
-nav ul li a:visited { color: #bdc3c7; }
-nav ul li a:hover { 
-    background-color: #34495e; 
-    border-radius: 4px;
-    color: #3498db;
-}
-nav ul li a:active { transform: translateY(2px); }
-nav ul li a:focus { outline: 2px solid #3498db; }
-
-/* ===== Головна секція (Пункт 3, 9, 11) ===== */
-
-main {
-    max-width: 1000px;
-    margin: 2rem auto; /* Центрування контейнера */
-    padding: 2rem;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    overflow: hidden; /* Обрізання контенту (Пункт 11) */
-}
-
-/* Декорування через псевдоелемент (Пункт 9) */
-h2::after {
-    content: ""; /* Обов'язково */
-    display: block;
-    width: 60px;
-    height: 4px;
-    background: #3498db;
-    margin-top: 10px;
-    border-radius: 2px;
-}
-
-/* Стилізація зображення профілю */
+/* Адаптивні зображення (Пункт 8) */
 img {
-    border-radius: 50%; /* Заокруглення кутів */
-    border: 5px solid #ecf0f1;
+    max-width: 100%;
+    height: auto;
     display: block;
-    margin: 0 auto 1.5rem;
-    transition: transform 0.3s ease;
+    border-radius: var(--border-radius);
 }
 
-img:hover {
-    transform: scale(1.05);
+/* ===== 3. Макет сторінки на CSS Grid (Пункт 1) ===== */
+.page {
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "content"
+        "sidebar"
+        "footer";
+    grid-template-columns: 1fr;
+    min-height: 100vh;
 }
 
-/* ===== Таблиця (Пункт 5) ===== */
+@media (min-width: 1024px) {
+    .page {
+        grid-template-areas: 
+            "header header"
+            "sidebar content"
+            "footer footer";
+        grid-template-columns: 280px 1fr;
+    }
+}
+
+header { grid-area: header; }
+main { grid-area: content; padding: var(--spacing-md); }
+aside { grid-area: sidebar; padding: var(--spacing-md); background: #e9ecef; }
+footer { grid-area: footer; }
+
+/* ===== 4. Хедер та Гамбургер-меню (Пункт 2, 10) ===== */
+header {
+    background-color: var(--color-footer);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing-lg);
+}
+
+.nav-list {
+    display: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 2rem; /* Відстань між словами */
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: #ffffff !important; /* Тільки білий колір */
+    font-weight: 700;           /* Жирний шрифт */
+    font-size: 1.1rem;
+    transition: opacity var(--transition-speed);
+}
+
+.nav-list li a:hover {
+    opacity: 0.7; /* При наведенні текст просто стане трохи прозорішим (ефект натискання) */
+    background: none !important; /* Прибираємо будь-який фон */
+}
+
+/* Гамбургер (смужки теж білі) */
+.menu-toggle { display: none; }
+.hamburger { display: flex; flex-direction: column; gap: 5px; cursor: pointer; }
+.hamburger span { width: 25px; height: 3px; background: #ffffff; transition: 0.3s; }
+
+/* Мобільне меню (випадаючий список) */
+.menu-toggle:checked ~ .nav-list {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--color-footer);
+    padding: var(--spacing-md);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .hamburger { display: none; }
+    .nav-list { display: flex; flex-direction: row; }
+}
+
+/* ===== 5. Анімації та переходи (Пункт 6, 7) ===== */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+main section {
+    animation: fadeIn 0.8s ease-out forwards;
+    background: white;
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* Переходи для кнопок та карток */
+.btn-up, button, a {
+    transition: all var(--transition-speed) ease;
+}
+
+.btn-up:hover {
+    transform: scale(1.1) rotate(360deg);
+    background: var(--color-secondary);
+}
+
+/* ===== 6. Таблиці та форми (Адаптивність) ===== */
+.table-container {
+    overflow-x: auto; /* Пункт 11 */
+}
 
 table {
     width: 100%;
-    border-collapse: collapse; /* Прибрати подвійні рамки */
-    margin: 2rem 0;
+    border-collapse: collapse;
 }
 
 th, td {
-    padding: 12px 15px;
+    padding: 12px;
     border: 1px solid #ddd;
-    text-align: left;
 }
 
-/* Стилізація заголовка */
-th {
-    background-color: #3498db;
-    color: white;
-    font-weight: bold;
-}
-
-/* "Зебра" та Hover для рядків */
 tr:nth-child(even) { background-color: #f9f9f9; }
-tr:hover { background-color: #f1f1f1; }
-
-/* ===== Форма (Пункт 6) ===== */
 
 form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    display: grid;
+    gap: var(--spacing-md);
 }
 
-fieldset {
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 1.5rem;
-}
-
-/* Селектор атрибута (Пункт 2) */
-input[type="text"], 
-input[type="email"], 
-select, 
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-}
-
-/* Стан фокусу (Пункт 6) */
-input:focus, textarea:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.3);
-}
-
-/* Кнопка відправки */
-button[type="submit"] {
-    background-color: #27ae60;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer; /* Зміна курсору */
-    font-size: 1.1rem;
-    font-weight: bold;
-    transition: background 0.3s;
-}
-
-button[type="submit"]:hover {
-    background-color: #2ecc71;
-}
-
-/* ===== Позиціонування (Пункт 7) ===== */
-
-/* Кнопка "Нагору" */
+/* ===== 7. Позиціонування ===== */
 .btn-up {
     position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: #3498db;
+    bottom: 20px;
+    right: 20px;
+    background: var(--color-primary);
     color: white;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     text-decoration: none;
-    z-index: 999;
+    z-index: 1001;
 }
-
-/* Приклад Relative + Absolute */
-.image-container {
-    position: relative;
-    display: inline-block;
-}
-
-.badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: #e74c3c;
-    color: white;
-    padding: 5px 10px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-}
-
-/* ===== Футер ===== */
 
 footer {
     text-align: center;
-    padding: 2rem 0;
-    background: #2c3e50;
+    padding: var(--spacing-lg);
+    background: var(--color-footer);
     color: #bdc3c7;
-    margin-top: 3rem;
+}
+
+.projects-grid {
+    display: grid;
+    /* Автоматична адаптація: картки самі стають у ряд або стовпчик */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+}
+
+.card {
+    background: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    border: 1px solid #eee;
+    box-shadow: var(--shadow);
+    /* Плавні переходи для ефекту наведення (Пункт 6) */
+    transition: transform var(--transition-speed) ease, 
+                box-shadow var(--transition-speed) ease;
+    text-align: center;
+}
+
+/* Ефект підняття картки при наведенні */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    border-color: var(--color-primary);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: var(--color-primary);
+}
+
+.card p {
+    font-size: 0.9rem;
+    color: #666;
 }

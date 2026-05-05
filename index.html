@@ -1,44 +1,91 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Портфоліо фронтенд-розробника">
+    <meta name="description" content="Адаптивне портфоліо фронтенд-розробника">
     <meta name="author" content="SENKIV">
     <title>Головна — Портфоліо</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>IVAN SENKIV</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Головна</a></li>
-                <li><a href="about.html">Про мене</a></li>
-                <li><a href="contacts.html">Контакти</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-<figure>
-    <img src="images/photo.jpg" alt="Моє фото" width="400">
-    <figcaption>Майбутній Frontend-розробник за роботою</figcaption>
-</figure>
+    <div class="page">
+        
+        <header>
+            <nav class="nav-container">
+                <div class="logo">
+                    <h1>IVAN SENKIV</h1>
+                </div>
 
-<blockquote>
-    "Код — це поезія, написана мовою логіки." — Мій девіз.
-</blockquote>
-        <section>
-            <h2>Вітаю у моєму портфоліо!</h2>
-            <p>Я — майбутній <strong>фронтенд-розробник</strong>. Зараз я опановую основи HTML5.</p>
-        </section>
-    </main>
+                <input type="checkbox" id="menu-toggle" class="menu-toggle">
+                <label for="menu-toggle" class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
 
-    <footer>
-        <p>&copy; 2026 SENKIV. Всі права захищені.</p>
-    </footer>
-<a href="#" class="btn-up">▲</a>
+                <ul class="nav-list">
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="about.html">Про мене</a></li>
+                    <li><a href="contacts.html">Контакти</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <aside class="sidebar">
+            <section>
+                <h3>Швидка довідка</h3>
+                <p><strong>Спеціалізація:</strong> Frontend</p>
+                <p><strong>Стек:</strong> HTML5, CSS3, JS</p>
+            </section>
+        </aside>
+
+        <main>
+<section>
+    <h2>Мої проєкти</h2>
+    <div class="projects-grid">
+        <div class="card">
+            <h3>Портфоліо-сайт</h3>
+            <p>Розробка адаптивного сайту-візитки з використанням сучасних технологій CSS Grid та Flexbox. Реалізовано Mobile First підхід та темну тему.</p>
+        </div>
+
+        <div class="card">
+            <h3>Landing Page</h3>
+            <p>Створення цільової сторінки для вигаданого продукту. Фокус на семантичній верстці, SEO-оптимізації та кросбраузерності елементів.</p>
+        </div>
+
+        <div class="card">
+            <h3>Інтерактивна анкета</h3>
+            <p>Робота зі складними формами та валідацією даних. Стилізація кастомних чекбоксів, селектів та анімація фокусу вводу.</p>
+        </div>
+    </div>
+</section>
+            <section class="hero-section">
+                <figure>
+                    <img src="images/photo.jpg" alt="Моє фото">
+                    <figcaption>Майбутній Frontend-розробник за роботою</figcaption>
+                </figure>
+
+                <blockquote>
+                    "Код — це поезія, написана мовою логіки." — Мій девіз.
+                </blockquote>
+
+                <article>
+                    <h2>Вітаю у моєму портфоліо!</h2>
+                    <p>Я — майбутній <strong>фронтенд-розробник</strong>. Зараз я опановую основи адаптивної верстки, Flexbox та CSS Grid.</p>
+                </article>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 SENKIV. Всі права захищені.</p>
+        </footer>
+        
+    </div> <a href="#" class="btn-up" aria-label="Повернутися вгору">▲</a>
+
 </body>
 </html>
