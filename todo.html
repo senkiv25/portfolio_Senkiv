@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager — Лабораторна 5</title>
+    <link rel="stylesheet" href="todo-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="todo-app">
+        <header>
+            <h1>Task Manager</h1>
+            <p id="user-info">Завантаження профілю...</p>
+        </header>
+
+        <section class="input-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Пошук завдань..." class="search-input">
+            </div>
+            
+            <form id="todoForm" class="todo-form">
+                <input type="text" id="todoInput" placeholder="Додати нове завдання..." required>
+                <button type="submit" id="addBtn" disabled>Додати</button>
+            </form>
+        </section>
+
+        <section class="filter-section">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Всі</button>
+                <button class="filter-btn" data-filter="active">Активні</button>
+                <button class="filter-btn" data-filter="completed">Виконані</button>
+            </div>
+            <div class="stats">
+                Залишилось: <span id="activeCount">0</span>
+            </div>
+        </section>
+
+        <div id="loader" class="loader hidden">Завантаження даних...</div>
+
+        <ul id="taskList" class="task-list">
+            </ul>
+    </div>
+
+    <script src="todo.js"></script>
+</body>
+</html>
